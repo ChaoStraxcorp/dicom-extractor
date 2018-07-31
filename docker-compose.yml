@@ -1,0 +1,11 @@
+version: '3'
+services:
+  lambda-build:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    env_file: .env
+    command: /app/deploy.sh
+    volumes:
+      - ./:/app
+

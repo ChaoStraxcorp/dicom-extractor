@@ -4,11 +4,11 @@ import base64
 import PIL.Image
 
 def lambda_handler(event, context):
-    ds = pydicom.dcmread("./explicit_ct_jpeg-lossless-nh_mono2.dcm")
+    ds = pydicom.dcmread("./sample/explicit_ct_jpeg-lossless-nh_mono2.dcm")
     image_2d = ds.pixel_array
     image_2d_scaled = image_2d_scaled = (np.maximum(image_2d,0) / image_2d.max()) * 255.0
     image_2d_scaled = np.uint8(image_2d_scaled)
-    PIL.Image.fromarray(image_2d_scaled).save("/tmp/hoge.png", bits=256, compress_level=0)
+    PIL.Image.fromarray(image_2d_scaled).save("hoge.png", bits=256, compress_level=0)
 
     return 'Hello from Lambda'
 
