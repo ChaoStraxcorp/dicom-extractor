@@ -1,11 +1,12 @@
 version: '3'
 services:
   lambda-build:
+    working_dir: /app
     build: 
         context: .
         dockerfile: Dockerfile
     env_file: .env
     command: /app/deploy.sh
     volumes:
-      - ./:/app
+      - .:/app
 
